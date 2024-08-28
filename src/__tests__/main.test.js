@@ -9,6 +9,7 @@ test('Changing user info should only rerender user form and the field which is c
   consoleSpy.mockClear();
   const { getByTestId } = render(<App />);
 
+  consoleSpy.mockClear();
   const firstNameInput = getByTestId('first-name');
   userEvent.type(firstNameInput, 'x');
 
@@ -19,6 +20,7 @@ test('Changing header color should only rerender header', () => {
   consoleSpy.mockClear();
   const { getByTestId } = render(<App />);
 
+  consoleSpy.mockClear();
   const changeHeaderColorButton = getByTestId('change-header-color-button');
   userEvent.click(changeHeaderColorButton);
 
