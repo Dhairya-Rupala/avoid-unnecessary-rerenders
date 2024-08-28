@@ -62,3 +62,20 @@ test('3', () => {
 
   expect(consoleSpy).toHaveBeenCalledTimes(1);
 });
+
+test('4', () => {
+  const { getByTestId } = render(<App />);
+
+  const header = getByTestId('header');
+  expect(header).toHaveAttribute('style', 'background-color: black;');
+
+  const changeHeaderColorButton = getByTestId('change-header-color-button');
+  userEvent.click(changeHeaderColorButton);
+  expect(header).toHaveAttribute('style', 'background-color: red;');
+
+  userEvent.click(changeHeaderColorButton);
+  expect(header).toHaveAttribute('style', 'background-color: grey;');
+
+  userEvent.click(changeHeaderColorButton);
+  expect(header).toHaveAttribute('style', 'background-color: dodgerBlue;');
+});
