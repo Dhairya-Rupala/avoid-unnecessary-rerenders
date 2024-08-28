@@ -5,17 +5,15 @@
 
 #root {
   height: 100vh;
+  overflow: auto;
+  font-family: sans-serif;
 }
 
 .App {
-  font-family: sans-serif;
+  padding: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: whitesmoke;
-  overflow: auto;
-  padding: 0px 20px;
 }
 
 .business-card-builder-container {
@@ -118,7 +116,7 @@ button:active {
 .business-card-preview-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 60px;
   justify-content: center;
   align-items: center;
 }

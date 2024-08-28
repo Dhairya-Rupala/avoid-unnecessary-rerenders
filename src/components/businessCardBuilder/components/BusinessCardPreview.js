@@ -4,7 +4,7 @@ const getFormattedContent = async (userInfo) => {
   const delayPromise = new Promise((res) => setTimeout(res, 500));
   await delayPromise;
 
-  const { firstName, lastName, role, company } = userInfo;
+  const { firstName = '', lastName = '', role = '', company = '' } = userInfo;
   const fullName = firstName + ' ' + lastName;
 
   return {
@@ -21,16 +21,9 @@ const BusinessCardPreview = ({ userInfo }) => {
 
   useEffect(() => {
     const fetchFormattedContent = async () => {
-      if (
-        userInfo.firstName &&
-        userInfo.lastName &&
-        userInfo.role &&
-        userInfo.company
-      ) {
-        setDataState({ loading: true });
-        const content = await getFormattedContent(userInfo);
-        setDataState({ loading: false, content });
-      }
+      setDataState({ loading: true });
+      const content = await getFormattedContent(userInfo);
+      setDataState({ loading: false, content });
     };
 
     fetchFormattedContent();
@@ -42,19 +35,15 @@ const BusinessCardPreview = ({ userInfo }) => {
 
   if (loading) {
     contentEl = <div>Loading Card Content, Please wait ...</div>;
-  } else if (!content) {
-    contentEl = (
-      <div>Please Enter the user details to create business card</div>
-    );
   } else {
     contentEl = (
       <div className="business-card-preview-content">
         <div className="fullName">
-          <b>{content.fullName}</b>
+          Name: {content?.fullName ? <b>{content.fullName}</b> : null}
         </div>
         <div className="company-role">
-          <div>Company: {content.company}</div>
-          <div>Role: {content.role}</div>
+          <div>Company: {content?.company}</div>
+          <div>Role: {content?.role}</div>
         </div>
       </div>
     );

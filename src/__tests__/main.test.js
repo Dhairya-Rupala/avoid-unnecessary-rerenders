@@ -5,7 +5,29 @@ import '@testing-library/jest-dom';
 
 const consoleSpy = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
-test('Changing user info should only rerender user form and the field which is changed', () => {
+test('1', async () => {
+  const { getByTestId } = render(<App />);
+
+  const firstNameInput = getByTestId('first-name');
+  const lastNameInput = getByTestId('last-name');
+  const companyInput = getByTestId('company');
+  const roleInput = getByTestId('role');
+
+  userEvent.type(firstNameInput, 'Alex');
+  userEvent.type(lastNameInput, 'Grey');
+  userEvent.type(companyInput, 'Tech Corp');
+  userEvent.type(roleInput, 'QA');
+
+  const businessPreviewCard = getByTestId('business-card-preview');
+
+  await waitFor(() => {
+    within(businessPreviewCard).getByText('Alex Grey');
+    within(businessPreviewCard).getByText('Company: Tech Corp');
+    within(businessPreviewCard).getByText('Role: QA');
+  });
+});
+
+test('2', () => {
   consoleSpy.mockClear();
   const { getByTestId } = render(<App />);
 
@@ -14,9 +36,15 @@ test('Changing user info should only rerender user form and the field which is c
   userEvent.type(firstNameInput, 'x');
 
   expect(consoleSpy).toHaveBeenCalledTimes(3);
+
+  consoleSpy.mockClear();
+  const companyInput = getByTestId('company');
+  userEvent.type(companyInput, 'y');
+
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
 });
 
-test('Changing header color should only rerender header', () => {
+test('3', () => {
   consoleSpy.mockClear();
   const { getByTestId } = render(<App />);
 
