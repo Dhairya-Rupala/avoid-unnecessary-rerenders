@@ -11,6 +11,7 @@ test('Company input field should function properly', async () => {
 
   const companyInput = getByTestId('company');
 
+  userEvent.clear(companyInput);
   userEvent.type(companyInput, 'Test Company');
 
   const businessPreviewCard = getByTestId('business-card-preview');

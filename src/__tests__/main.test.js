@@ -1,5 +1,6 @@
 import App from '../App';
-import { render } from '@testing-library/react';
+import { within } from '@testing-library/dom';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
@@ -13,9 +14,16 @@ test('1', async () => {
   const companyInput = getByTestId('company');
   const roleInput = getByTestId('role');
 
+  userEvent.clear(firstNameInput);
   userEvent.type(firstNameInput, 'Alex');
+
+  userEvent.clear(lastNameInput);
   userEvent.type(lastNameInput, 'Grey');
+
+  userEvent.clear(companyInput);
   userEvent.type(companyInput, 'Tech Corp');
+
+  userEvent.clear(roleInput);
   userEvent.type(roleInput, 'QA');
 
   const businessPreviewCard = getByTestId('business-card-preview');
@@ -35,13 +43,13 @@ test('2', () => {
   const firstNameInput = getByTestId('first-name');
   userEvent.type(firstNameInput, 'x');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 
   consoleSpy.mockClear();
   const companyInput = getByTestId('company');
   userEvent.type(companyInput, 'y');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 });
 
 test('3', () => {
