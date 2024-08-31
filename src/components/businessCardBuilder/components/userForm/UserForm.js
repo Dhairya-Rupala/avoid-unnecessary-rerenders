@@ -1,9 +1,10 @@
 import { InputFormField } from './InputFormField';
+import { ColorConfigInputFormField } from './ColorConfigInputFormField';
 
 const UserForm = ({ userInfo, onAction }) => {
   console.log('UserForm Field Rendered');
 
-  const { firstName, lastName, role, company } = userInfo;
+  const { firstName, lastName, role, company, colorConfig } = userInfo;
 
   const onFirstNameChange = (e) =>
     onAction({
@@ -28,6 +29,13 @@ const UserForm = ({ userInfo, onAction }) => {
       type: 'UPDATE_COMPANY',
       payload: { company: e.target.value },
     });
+
+  const onColorConfigChange = (value) => {
+    onAction({
+      type: 'CHANGE_COLOR_CONFIG',
+      payload: { colorConfig: value },
+    });
+  };
 
   return (
     <div className="user-form-container">
@@ -56,6 +64,12 @@ const UserForm = ({ userInfo, onAction }) => {
           label="Role"
           value={role}
           onChange={onRoleChange}
+        />
+        <ColorConfigInputFormField
+          id="color-config"
+          label="Colors"
+          value={colorConfig}
+          onChange={onColorConfigChange}
         />
       </div>
     </div>

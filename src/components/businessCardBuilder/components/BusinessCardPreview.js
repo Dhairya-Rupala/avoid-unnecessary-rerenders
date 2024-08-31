@@ -19,6 +19,8 @@ const BusinessCardPreview = ({ userInfo }) => {
 
   const [dataState, setDataState] = useState({ loading: false });
 
+  const { colorConfig } = userInfo;
+
   useEffect(() => {
     const fetchFormattedContent = async () => {
       setDataState({ loading: true });
@@ -55,6 +57,10 @@ const BusinessCardPreview = ({ userInfo }) => {
       <div
         data-testid="business-card-preview"
         className="business-card-preview"
+        style={{
+          backgroundColor: colorConfig.bgColor,
+          color: colorConfig.fontColor,
+        }}
       >
         {contentEl}
       </div>

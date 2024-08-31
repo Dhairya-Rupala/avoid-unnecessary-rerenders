@@ -3,13 +3,16 @@ const InputFormField = ({ id, label, value, onChange }) => {
 
   return (
     <div className="input-form-field">
-      <label htmlFor={id}>{label}</label>
+      <label className="label" htmlFor={id}>
+        {label}
+      </label>
       <input
         id={id}
         data-testid={id}
         type="text"
         value={value}
         onChange={onChange}
+        className="text-input"
       />
     </div>
   );

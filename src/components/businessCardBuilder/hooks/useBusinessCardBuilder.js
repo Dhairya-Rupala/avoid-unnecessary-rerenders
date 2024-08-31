@@ -7,10 +7,15 @@ const DEFAULT_ROLE = 'Engineer';
 
 export const useBusinessCardBuilder = () => {
   const [headerColorIndex, setHeaderColorIndex] = useState(0);
+
   const [firstName, setFirstName] = useState(DEFAULT_FIRST_NAME);
   const [lastName, setLastName] = useState(DEFAULT_LAST_NAME);
   const [company, setCompany] = useState(DEFAULT_COMPANY);
   const [role, setRole] = useState(DEFAULT_ROLE);
+  const [colorConfig, setColorConfig] = useState({
+    bgColor: 'white',
+    fontColor: 'black',
+  });
 
   const COLORS = ['black', 'red', 'grey', 'dodgerBlue'];
 
@@ -36,11 +41,15 @@ export const useBusinessCardBuilder = () => {
         setHeaderColorIndex((headerColorIndex + 1) % COLORS.length);
         break;
       }
+      case 'CHANGE_COLOR_CONFIG': {
+        setColorConfig(action.payload.colorConfig);
+        break;
+      }
     }
   };
 
   return {
-    userInfo: { firstName, lastName, company, role },
+    userInfo: { firstName, lastName, company, role, colorConfig },
     headerColor: COLORS[headerColorIndex],
     onAction,
   };
