@@ -49,7 +49,7 @@ export const useBusinessCardBuilder = () => {
   };
 
   return {
-    userInfo: { firstName, lastName, company, role, colorConfig },
+    formData: { firstName, lastName, company, role, colorConfig },
     headerColor: COLORS[headerColorIndex],
     onAction,
   };

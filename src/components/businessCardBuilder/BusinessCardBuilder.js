@@ -4,7 +4,7 @@ import { BusinessCardPreview } from './components/BusinessCardPreview';
 import { Header } from './components/Header';
 
 export const BusinessCardBuilder = () => {
-  const { userInfo, headerColor, onAction } = useBusinessCardBuilder();
+  const { formData, headerColor, onAction } = useBusinessCardBuilder();
 
   const onChangeHeaderColor = () => onAction({ type: 'UPDATE_HEADER_COLOR' });
 
@@ -15,11 +15,8 @@ export const BusinessCardBuilder = () => {
         onChangeHeaderColor={onChangeHeaderColor}
       />
       <div className="business-card-builder">
-        <UserForm userInfo={userInfo} onAction={onAction} />
-        <BusinessCardPreview
-          key={`${userInfo.firstName}-${userInfo.lastName}-${userInfo.company}-${userInfo.role}`}
-          userInfo={userInfo}
-        />
+        <UserForm formData={formData} onAction={onAction} />
+        <BusinessCardPreview formData={formData} />
       </div>
     </div>
   );

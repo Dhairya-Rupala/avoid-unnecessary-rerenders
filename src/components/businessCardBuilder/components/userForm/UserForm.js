@@ -1,10 +1,10 @@
 import { InputFormField } from './InputFormField';
 import { ColorConfigInputFormField } from './ColorConfigInputFormField';
 
-const UserForm = ({ userInfo, onAction }) => {
+const UserForm = ({ formData, onAction }) => {
   console.log('UserForm Field Rendered');
 
-  const { firstName, lastName, role, company, colorConfig } = userInfo;
+  const { firstName, lastName, role, company, colorConfig } = formData;
 
   const onFirstNameChange = (e) =>
     onAction({
