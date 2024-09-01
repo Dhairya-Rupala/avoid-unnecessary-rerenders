@@ -152,7 +152,7 @@ button:active {
 }
 
 .small-button {
-  height: 28px;
+  height: 30px;
   font-size: 12px;
   line-height: 12px;
   padding: 4px 8px;
@@ -174,7 +174,7 @@ button:active {
 .skills-input {
   display: flex;
   gap: 8px;
-  flex: 1;
+  flex-wrap: wrap;
 }
 
 .skill-input-field {
@@ -190,7 +190,11 @@ button:active {
   gap: 8px;
 }
 
-#skill-input,
+#skill-input {
+  height: 30px;
+  flex: 1;
+}
+
 #efficiency-input {
   height: 30px;
   max-width: 200px;
