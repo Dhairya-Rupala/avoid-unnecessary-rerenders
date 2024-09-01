@@ -147,6 +147,8 @@ button:active {
   background-color: rgb(197, 195, 195);
   padding: 3px;
   flex: none;
+  display: flex;
+  align-items: center;
 }
 
 .small-button {

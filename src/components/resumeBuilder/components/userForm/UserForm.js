@@ -40,7 +40,7 @@ const UserForm = ({ formData, onAction }) => {
   return (
     <div className="form-container">
       <h3>User Form</h3>
-      <div className="form">
+      <div data-testid="form" className="form">
         <InputFormField
           id="first-name"
           label="First Name"

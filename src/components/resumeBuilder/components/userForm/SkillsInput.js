@@ -33,7 +33,7 @@ export const SkillsInput = ({ label, value, onChange }) => {
             data-testid="efficiency-selector"
             value={currentSkill.efficiency}
             onChange={(e) =>
-              setCurrentSkill({ ...currentSkill, efficiency: e.target.value })
+              setCurrentSkill({ ...currentSkill, efficiency: +e.target.value })
             }
           >
             {Array(10)
@@ -69,7 +69,6 @@ export const SkillsInput = ({ label, value, onChange }) => {
             </button>
             <button
               data-testid="submit-skills-button"
-              disabled={!value.length}
               className="small-button"
               onClick={() => onChange(skills)}
             >
