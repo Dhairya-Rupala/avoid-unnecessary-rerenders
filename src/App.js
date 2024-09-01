@@ -1,10 +1,10 @@
 import React from 'react';
-import { BusinessCardBuilder } from './components/businessCardBuilder';
+import { ResumeBuilder } from './components/resumeBuilder';
 
 export default function App() {
   return (
     <div className="App">
-      <BusinessCardBuilder />
+      <ResumeBuilder />
     </div>
   );
 }

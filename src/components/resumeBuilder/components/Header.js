@@ -5,9 +5,9 @@ const Header = ({ headerColor, onChangeHeaderColor }) => {
     <div
       data-testid="header"
       style={{ backgroundColor: headerColor }}
-      className="business-card-builder-header"
+      className="header"
     >
-      <h2>Business Card Builder</h2>
+      <h2>Resume Builder</h2>
       <button
         data-testid="change-header-color-button"
         onClick={onChangeHeaderColor}

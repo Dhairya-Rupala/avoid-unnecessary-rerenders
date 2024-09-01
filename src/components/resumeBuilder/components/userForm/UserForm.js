@@ -1,10 +1,10 @@
 import { InputFormField } from './InputFormField';
-import { ColorConfigInputFormField } from './ColorConfigInputFormField';
+import { SkillsInput } from './SkillsInput';
 
 const UserForm = ({ formData, onAction }) => {
   console.log('UserForm Field Rendered');
 
-  const { firstName, lastName, role, company, colorConfig } = formData;
+  const { firstName, lastName, role, company, skills } = formData;
 
   const onFirstNameChange = (e) =>
     onAction({
@@ -30,17 +30,17 @@ const UserForm = ({ formData, onAction }) => {
       payload: { company: e.target.value },
     });
 
-  const onColorConfigChange = (value) => {
+  const onSkillsChange = (value) => {
     onAction({
-      type: 'CHANGE_COLOR_CONFIG',
-      payload: { colorConfig: value },
+      type: 'CHANGE_SKILLS',
+      payload: { skills: value },
     });
   };
 
   return (
-    <div className="user-form-container">
-      <h3 className="user-form-header">User Form</h3>
-      <div className="user-form">
+    <div className="form-container">
+      <h3>User Form</h3>
+      <div className="form">
         <InputFormField
           id="first-name"
           label="First Name"
@@ -65,11 +65,10 @@ const UserForm = ({ formData, onAction }) => {
           value={role}
           onChange={onRoleChange}
         />
-        <ColorConfigInputFormField
-          id="color-config"
-          label="Colors"
-          value={colorConfig}
-          onChange={onColorConfigChange}
+        <SkillsInput
+          label="Skills and Efficiency"
+          value={skills}
+          onChange={onSkillsChange}
         />
       </div>
     </div>

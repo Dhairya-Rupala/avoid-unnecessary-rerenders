@@ -5,17 +5,14 @@ const DEFAULT_LAST_NAME = 'Ipsum';
 const DEFAULT_COMPANY = 'IT Corp';
 const DEFAULT_ROLE = 'Engineer';
 
-export const useBusinessCardBuilder = () => {
+export const useResumeBuilder = () => {
   const [headerColorIndex, setHeaderColorIndex] = useState(0);
 
   const [firstName, setFirstName] = useState(DEFAULT_FIRST_NAME);
   const [lastName, setLastName] = useState(DEFAULT_LAST_NAME);
   const [company, setCompany] = useState(DEFAULT_COMPANY);
   const [role, setRole] = useState(DEFAULT_ROLE);
-  const [colorConfig, setColorConfig] = useState({
-    bgColor: 'white',
-    fontColor: 'black',
-  });
+  const [skills, setSkills] = useState([]);
 
   const COLORS = ['black', 'red', 'grey', 'dodgerBlue'];
 
@@ -41,15 +38,15 @@ export const useBusinessCardBuilder = () => {
         setHeaderColorIndex((headerColorIndex + 1) % COLORS.length);
         break;
       }
-      case 'CHANGE_COLOR_CONFIG': {
-        setColorConfig(action.payload.colorConfig);
+      case 'CHANGE_SKILLS': {
+        setSkills(action.payload.skills);
         break;
       }
     }
   };
 
   return {
-    formData: { firstName, lastName, company, role, colorConfig },
+    formData: { firstName, lastName, company, role, skills },
     headerColor: COLORS[headerColorIndex],
     onAction,
   };

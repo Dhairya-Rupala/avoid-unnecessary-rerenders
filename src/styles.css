@@ -10,65 +10,9 @@
 }
 
 .App {
-  padding: 50px;
+  padding: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.business-card-builder-container {
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border: 2px solid black;
-  border-radius: 6px;
-}
-
-.business-card-builder-header {
-  display: flex;
-  flex: none;
-  gap: 20px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: black;
-  color: white;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.business-card-builder {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 20px;
-}
-
-.user-form-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.user-form-header {
-  text-align: left;
-}
-
-.user-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 24px;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: white;
-}
-
-.input-form-field {
-  display: flex;
-  gap: 4px;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -88,7 +32,64 @@ button:active {
   background-color: #eef0f1;
 }
 
-.business-card-preview-container {
+.resume-builder-container {
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 6px;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  flex: none;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.resume-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 30px 40px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.input-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  flex: 1;
+}
+
+.text-input {
+  height: 30px;
+}
+
+.resume-preview-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -96,14 +97,10 @@ button:active {
   min-height: 300px;
 }
 
-.business-card-preview-header {
-  text-align: left;
-}
-
-.business-card-preview {
+.resume-preview {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 40px;
   padding: 14px;
   justify-content: center;
   align-items: center;
@@ -113,12 +110,10 @@ button:active {
   text-align: center;
 }
 
-.business-card-preview-content {
+.name-company-details {
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
 }
 
 .fullName {
@@ -131,55 +126,71 @@ button:active {
   gap: 4px;
 }
 
-.color-config-input-form-field {
+.resume-preview-skill-tags-container {
+  max-width: 400px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
 }
 
-.color-config-inputs {
-  max-width: 400px;
-  flex: 2;
+.skill-tags-container {
   display: flex;
-  gap: 8px;
-  justify-content: space-between;
+  gap: 10px;
   flex-wrap: wrap;
+}
+
+.skill-tag {
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: rgb(197, 195, 195);
+  padding: 3px;
+  flex: none;
 }
 
 .small-button {
   height: 28px;
   font-size: 12px;
   line-height: 12px;
-  padding: 4px;
+  padding: 4px 8px;
 }
 
-.color-config-submit-button {
-  align-self: flex-end;
+.skills-input-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.label {
-  flex: 1;
-}
-
-.text-input {
-  flex: 2;
-}
-
-input,
-select {
-  height: 30px;
-  max-width: 400px;
-}
-
-.bg-input-field,
-.fontColor-input-field {
+.skills-input-container {
   flex: 1;
   display: flex;
-  gap: 4px;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
 }
 
-.font-color-input-label,
-.bg-color-input-label {
-  font-size: 14px;
+.skills-input {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.skill-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.skills-input-buttons {
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+
+#skill-input,
+#efficiency-input {
+  height: 30px;
+  max-width: 200px;
+  flex: 1;
 }
