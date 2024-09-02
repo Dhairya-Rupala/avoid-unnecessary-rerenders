@@ -4,7 +4,11 @@ const SkillTags = ({ skills, style }) => {
   return (
     <div className="skill-tags-container" style={style}>
       {skills.map((skill, index) => (
-        <div data-testid={`skill-tag-${index}`} className="skill-tag">
+        <div
+          key={index}
+          data-testid={`skill-tag-${index}`}
+          className="skill-tag"
+        >
           {skill.name}
         </div>
       ))}

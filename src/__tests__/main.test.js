@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 const consoleSpy = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
-test('1', async () => {
+test('1', () => {
   const { getByTestId } = render(<App />);
 
   const firstNameInput = getByTestId('first-name');
@@ -111,7 +111,7 @@ test('6', () => {
   const skillNameInput1 = getByTestId('skill-name-input-0');
   userEvent.type(skillNameInput1, 'x');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  expect(consoleSpy).toHaveBeenCalledTimes(5);
   consoleSpy.mockClear();
 
   const efficiencySelector1 = getByTestId('efficiency-selector-0');

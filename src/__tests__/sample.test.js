@@ -66,5 +66,5 @@ test('If we enter some skills and then just update the efficiency then it should
 
   userEvent.selectOptions(efficiencySelector1, '10');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 });

@@ -1,17 +1,12 @@
 export const getFormattedContent = (formData) => {
-  const {
-    firstName = '',
-    lastName = '',
-    role = '',
-    company = '',
-    skills,
-  } = formData;
+  console.log('Formatting content');
+
+  const { firstName = '', lastName = '', role = '', company = '' } = formData;
   const fullName = firstName + ' ' + lastName;
 
   return {
     fullName,
     company,
     role,
-    skills,
   };
 };
