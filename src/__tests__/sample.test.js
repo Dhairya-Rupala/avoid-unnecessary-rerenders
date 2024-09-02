@@ -36,6 +36,7 @@ test('Changing header color should only re-render the header', () => {
 
 test('If we enter some skills and then just update the efficiency then it should not re-render the resume preview and should not perform un-necessary calculations', () => {
   const { getByTestId } = render(<App />);
+  consoleSpy.mockClear();
 
   const skillNameInput1 = getByTestId('skill-name-input-0');
   const efficiencySelector1 = getByTestId('efficiency-selector-0');

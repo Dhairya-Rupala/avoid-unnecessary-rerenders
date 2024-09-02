@@ -9,7 +9,7 @@ const SkillTags = ({ skills }) => {
           data-testid={`skill-tag-${index}`}
           className="skill-tag"
         >
-          {skill.name}
+          {skill}
         </div>
       ))}
     </div>

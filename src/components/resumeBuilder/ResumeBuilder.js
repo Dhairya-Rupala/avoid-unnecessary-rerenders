@@ -8,6 +8,11 @@ export const ResumeBuilder = () => {
 
   const onChangeHeaderColor = () => onAction({ type: 'UPDATE_HEADER_COLOR' });
 
+  const adaptedFormData = {
+    ...formData,
+    skills: formData.skills.map((skill) => skill.name),
+  };
+
   return (
     <div className="resume-builder-container">
       <Header
@@ -16,7 +21,7 @@ export const ResumeBuilder = () => {
       />
       <div className="resume-builder">
         <UserForm formData={formData} onAction={onAction} />
-        <ResumePreview formData={formData} />
+        <ResumePreview formData={adaptedFormData} />
       </div>
     </div>
   );
