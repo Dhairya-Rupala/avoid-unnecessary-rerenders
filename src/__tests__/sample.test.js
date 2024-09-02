@@ -46,39 +46,25 @@ test('Changing header color should only re-render the header', () => {
   expect(consoleSpy).toHaveBeenCalledTimes(1);
 });
 
-test('If we enter the skills in the different order with the same efficiency it should not re-render the Resume Preview', () => {
+test('If we enter some skills and then just update the efficiency then it should not re-render the resume preview', () => {
   const { getByTestId } = render(<App />);
 
-  const skillNameInput = getByTestId('skill-name-input');
-  const efficiencySelector = getByTestId('efficiency-selector');
+  const skillNameInput1 = getByTestId('skill-name-input-0');
+  const efficiencySelector1 = getByTestId('efficiency-selector-0');
+  userEvent.type(skillNameInput1, 'skill 1');
+  userEvent.selectOptions(efficiencySelector1, '1');
+
   const addSkillButton = getByTestId('add-skill-button');
-  const clearSkillsButton = getByTestId('clear-skills-button');
-  const submitSkillsButton = getByTestId('submit-skills-button');
-
-  userEvent.type(skillNameInput, 'skill 1');
-  userEvent.selectOptions(efficiencySelector, '1');
   userEvent.click(addSkillButton);
 
-  userEvent.type(skillNameInput, 'skill 2');
-  userEvent.selectOptions(efficiencySelector, '2');
-  userEvent.click(addSkillButton);
+  const skillNameInput2 = getByTestId('skill-name-input-1');
+  const efficiencySelector2 = getByTestId('efficiency-selector-1');
+  userEvent.type(skillNameInput2, 'skill 2');
+  userEvent.selectOptions(efficiencySelector2, '8');
+
   consoleSpy.mockClear();
 
-  userEvent.click(submitSkillsButton);
+  userEvent.selectOptions(efficiencySelector1, '10');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(4);
-  userEvent.click(clearSkillsButton);
-
-  userEvent.type(skillNameInput, 'skill 2');
-  userEvent.selectOptions(efficiencySelector, '2');
-  userEvent.click(addSkillButton);
-
-  userEvent.type(skillNameInput, 'skill 1');
-  userEvent.selectOptions(efficiencySelector, '1');
-  userEvent.click(addSkillButton);
-
-  consoleSpy.mockClear();
-  userEvent.click(submitSkillsButton);
-
-  expect(consoleSpy).toHaveBeenCalledTimes(2);
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
 });

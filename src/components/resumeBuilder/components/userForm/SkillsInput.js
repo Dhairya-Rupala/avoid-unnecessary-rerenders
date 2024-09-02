@@ -12,7 +12,7 @@ const SkillsInput = ({ id, value, onChange }) => {
     <div className="skills-input">
       <input
         id="skill-input"
-        data-testid="skill-name-input"
+        data-testid={`skill-name-input-${id}`}
         type="text"
         value={value.name}
         placeholder="Skill"
@@ -20,7 +20,7 @@ const SkillsInput = ({ id, value, onChange }) => {
       />
       <select
         id="efficiency-input"
-        data-testid="efficiency-selector"
+        data-testid={`efficiency-selector-${id}`}
         value={value.efficiency}
         onChange={(e) =>
           onChange(id, { ...value, efficiency: +e.target.value })

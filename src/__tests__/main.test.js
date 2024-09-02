@@ -81,97 +81,51 @@ test('4', () => {
 test('5', () => {
   const { getByTestId } = render(<App />);
 
-  const skillNameInput = getByTestId('skill-name-input');
-  const efficiencySelector = getByTestId('efficiency-selector');
+  const skillNameInput1 = getByTestId('skill-name-input-0');
+  userEvent.type(skillNameInput1, 'C++');
+
+  const efficiencySelector1 = getByTestId('efficiency-selector-0');
+  userEvent.selectOptions(efficiencySelector1, '1');
+
   const addSkillButton = getByTestId('add-skill-button');
-  const submitSkillsButton = getByTestId('submit-skills-button');
-
-  const form = getByTestId('form');
-
-  userEvent.type(skillNameInput, 'C++');
-  userEvent.selectOptions(efficiencySelector, '1');
   userEvent.click(addSkillButton);
 
-  userEvent.type(skillNameInput, 'Python');
-  userEvent.selectOptions(efficiencySelector, '7');
-  userEvent.click(addSkillButton);
+  const skillNameInput2 = getByTestId('skill-name-input-1');
+  userEvent.type(skillNameInput2, 'Python');
 
-  expect(within(form).getByText('C++ (1)'));
-  expect(within(form).getByText('Python (7)'));
-
-  userEvent.click(submitSkillsButton);
+  const efficiencySelector2 = getByTestId('efficiency-selector-1');
+  userEvent.selectOptions(efficiencySelector2, '10');
 
   const resumePreview = getByTestId('resume-preview');
-  expect(within(resumePreview).getByText('C++ (1)'));
-  expect(within(resumePreview).getByText('Python (7)'));
-
   const firstSkill = within(resumePreview).getByTestId('skill-tag-0');
   const secondSkill = within(resumePreview).getByTestId('skill-tag-1');
 
-  expect(within(firstSkill).getByText('Python (7)'));
-  expect(within(secondSkill).getByText('C++ (1)'));
+  expect(within(firstSkill).getByText('C++'));
+  expect(within(secondSkill).getByText('Python'));
 });
 
 test('6', () => {
   const { getByTestId } = render(<App />);
   consoleSpy.mockClear();
 
-  const skillNameInput = getByTestId('skill-name-input');
-  userEvent.type(skillNameInput, 'x');
+  const skillNameInput1 = getByTestId('skill-name-input-0');
+  userEvent.type(skillNameInput1, 'x');
 
-  expect(consoleSpy).toHaveBeenCalledTimes(1);
-
-  const efficiencySelector = getByTestId('efficiency-selector');
-  userEvent.selectOptions(efficiencySelector, '3');
-
-  expect(consoleSpy).toHaveBeenCalledTimes(2);
-
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
   consoleSpy.mockClear();
+
+  const efficiencySelector1 = getByTestId('efficiency-selector-0');
+  userEvent.selectOptions(efficiencySelector1, '3');
+
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  consoleSpy.mockClear();
+
+  userEvent.selectOptions(efficiencySelector1, '5');
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  consoleSpy.mockClear();
+
   const addSkillButton = getByTestId('add-skill-button');
   userEvent.click(addSkillButton);
-
-  expect(consoleSpy).toHaveBeenCalledTimes(2);
-
-  consoleSpy.mockClear();
-  const clearSkillsButton = getByTestId('clear-skills-button');
-  userEvent.click(clearSkillsButton);
-
-  expect(consoleSpy).toHaveBeenCalledTimes(1);
-});
-
-test('7', () => {
-  const { getByTestId } = render(<App />);
-
-  const skillNameInput = getByTestId('skill-name-input');
-  const efficiencySelector = getByTestId('efficiency-selector');
-  const addSkillButton = getByTestId('add-skill-button');
-  const clearSkillsButton = getByTestId('clear-skills-button');
-  const submitSkillsButton = getByTestId('submit-skills-button');
-
-  userEvent.type(skillNameInput, 'Jest');
-  userEvent.selectOptions(efficiencySelector, '1');
-  userEvent.click(addSkillButton);
-
-  userEvent.type(skillNameInput, 'Java');
-  userEvent.selectOptions(efficiencySelector, '5');
-  userEvent.click(addSkillButton);
-  consoleSpy.mockClear();
-
-  userEvent.click(submitSkillsButton);
-
-  expect(consoleSpy).toHaveBeenCalledTimes(4);
-  userEvent.click(clearSkillsButton);
-
-  userEvent.type(skillNameInput, 'Java');
-  userEvent.selectOptions(efficiencySelector, '5');
-  userEvent.click(addSkillButton);
-
-  userEvent.type(skillNameInput, 'Jest');
-  userEvent.selectOptions(efficiencySelector, '1');
-  userEvent.click(addSkillButton);
-
-  consoleSpy.mockClear();
-  userEvent.click(submitSkillsButton);
 
   expect(consoleSpy).toHaveBeenCalledTimes(2);
 });
