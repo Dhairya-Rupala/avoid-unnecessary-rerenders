@@ -143,4 +143,19 @@ test('6', () => {
   userEvent.click(addSkillButton);
 
   expect(consoleSpy).toHaveBeenCalledTimes(2);
+  consoleSpy.mockClear();
+
+  const skillNameInput2 = getByTestId('skill-name-input-1');
+  userEvent.type(skillNameInput2, 'y');
+
+  expect(consoleSpy).toHaveBeenCalledTimes(5);
+  consoleSpy.mockClear();
+
+  const efficiencySelector2 = getByTestId('efficiency-selector-1');
+  userEvent.selectOptions(efficiencySelector2, '6');
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  consoleSpy.mockClear();
+
+  userEvent.type(skillNameInput1, 'p');
+  expect(consoleSpy).toHaveBeenCalledTimes(5);
 });
