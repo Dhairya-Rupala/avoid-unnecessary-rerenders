@@ -4,13 +4,13 @@ Avoid unnecessary re-renders and computations.
 
 ## Problem Statement
 
-Our application generates a basic resume from user details and consists of three components: the header, the user form, and the resume preview. Users can add skills and their corresponding efficiency by entering the details into skills input.The Application contains several bugs which need to be addressed.
+Our application generates a basic resume from user details and consists of three components: the header, the user form, and the resume preview. Users can add skills and their corresponding efficiency by entering the details into skills input, these skills will be displayed in the resume preview in the same order they are entered independent of their efficiency. The Application contains several bugs which need to be addressed.
 
 ## Issues
 
 1. The “Change Header Color” button does not change the header color.
 2. There are numerous unnecessary re-renders in the UI. For instance, changing any field in the user form causes the header to re-render. Similarly, changing the header color triggers re-renders of the user form and resume preview.
-3. If skills are added as the order C++(5), Python(9), they should be displayed in the resume preview as C++, Python (The same order in which they are entered). Now if we are changing the efficiency of any skills it is re-rendering the resume preview.
+3. If we add some skills and then change it's efficiency then it is re-rendering the resume preview.
 
 ## Expected Behavior
 
