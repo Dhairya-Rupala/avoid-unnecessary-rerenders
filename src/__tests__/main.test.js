@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 const consoleSpy = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
-test('1', () => {
+test('1', async () => {
   const { getByTestId } = render(<App />);
 
   const firstNameInput = getByTestId('first-name');
@@ -26,11 +26,18 @@ test('1', () => {
   userEvent.clear(roleInput);
   userEvent.type(roleInput, 'QA');
 
+  const skillNameInput1 = getByTestId('skill-name-input-0');
+  userEvent.type(skillNameInput1, 'C++');
+
+  const efficiencySelector1 = getByTestId('efficiency-selector-0');
+  userEvent.selectOptions(efficiencySelector1, '6');
+
   const resumePreview = getByTestId('resume-preview');
 
   within(resumePreview).getByText('Alex Grey');
   within(resumePreview).getByText('Company: Tech Corp');
   within(resumePreview).getByText('Role: QA');
+  within(resumePreview).getByText('C++');
 });
 
 test('2', () => {
@@ -39,15 +46,23 @@ test('2', () => {
 
   consoleSpy.mockClear();
   const firstNameInput = getByTestId('first-name');
-  userEvent.type(firstNameInput, 'x');
+  userEvent.type(firstNameInput, 'f');
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  consoleSpy.mockClear();
+  const lastNameInput = getByTestId('last-name');
+  userEvent.type(lastNameInput, 'l');
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 
   consoleSpy.mockClear();
   const companyInput = getByTestId('company');
-  userEvent.type(companyInput, 'y');
+  userEvent.type(companyInput, 'c');
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
+  consoleSpy.mockClear();
+  const roleInput = getByTestId('role');
+  userEvent.type(roleInput, 'r');
+  expect(consoleSpy).toHaveBeenCalledTimes(4);
 });
 
 test('3', () => {

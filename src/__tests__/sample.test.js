@@ -46,25 +46,20 @@ test('Changing header color should only re-render the header', () => {
   expect(consoleSpy).toHaveBeenCalledTimes(1);
 });
 
-test('If we enter some skills and then just update the efficiency then it should not re-render the resume preview', () => {
+test('If we enter some skills and then just update the efficiency then it should not re-render the resume preview and should not perform un-necessary calculations', () => {
   const { getByTestId } = render(<App />);
 
   const skillNameInput1 = getByTestId('skill-name-input-0');
   const efficiencySelector1 = getByTestId('efficiency-selector-0');
-  userEvent.type(skillNameInput1, 'skill 1');
-  userEvent.selectOptions(efficiencySelector1, '1');
 
-  const addSkillButton = getByTestId('add-skill-button');
-  userEvent.click(addSkillButton);
-
-  const skillNameInput2 = getByTestId('skill-name-input-1');
-  const efficiencySelector2 = getByTestId('efficiency-selector-1');
-  userEvent.type(skillNameInput2, 'skill 2');
-  userEvent.selectOptions(efficiencySelector2, '8');
+  userEvent.type(skillNameInput1, 'a');
+  expect(consoleSpy).toHaveBeenCalledTimes(5);
 
   consoleSpy.mockClear();
+  userEvent.selectOptions(efficiencySelector1, '1');
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
 
+  consoleSpy.mockClear();
   userEvent.selectOptions(efficiencySelector1, '10');
-
-  expect(consoleSpy).toHaveBeenCalledTimes(4);
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
 });
