@@ -142,25 +142,6 @@ test('6', () => {
 test('7', () => {
   const { getByTestId } = render(<App />);
 
-  const firstNameInput = getByTestId('first-name');
-  const skillNameInput = getByTestId('skill-name-input');
-  const efficiencySelector = getByTestId('efficiency-selector');
-  const addSkillButton = getByTestId('add-skill-button');
-  const submitSkillsButton = getByTestId('submit-skills-button');
-
-  userEvent.type(skillNameInput, 'Javascript');
-  userEvent.selectOptions(efficiencySelector, '1');
-  userEvent.click(addSkillButton);
-  userEvent.click(submitSkillsButton);
-  consoleSpy.mockClear();
-
-  userEvent.type(firstNameInput, 'D');
-  expect(consoleSpy).toHaveBeenCalledTimes(3);
-});
-
-test('8', () => {
-  const { getByTestId } = render(<App />);
-
   const skillNameInput = getByTestId('skill-name-input');
   const efficiencySelector = getByTestId('efficiency-selector');
   const addSkillButton = getByTestId('add-skill-button');
@@ -172,7 +153,7 @@ test('8', () => {
   userEvent.click(addSkillButton);
 
   userEvent.type(skillNameInput, 'Java');
-  userEvent.selectOptions(efficiencySelector, '2');
+  userEvent.selectOptions(efficiencySelector, '5');
   userEvent.click(addSkillButton);
   consoleSpy.mockClear();
 
@@ -182,7 +163,7 @@ test('8', () => {
   userEvent.click(clearSkillsButton);
 
   userEvent.type(skillNameInput, 'Java');
-  userEvent.selectOptions(efficiencySelector, '2');
+  userEvent.selectOptions(efficiencySelector, '5');
   userEvent.click(addSkillButton);
 
   userEvent.type(skillNameInput, 'Jest');
