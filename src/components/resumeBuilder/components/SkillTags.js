@@ -5,7 +5,7 @@ const SkillTags = ({ skills, style }) => {
     <div className="skill-tags-container" style={style}>
       {skills.map((skill, index) => (
         <div data-testid={`skill-tag-${index}`} className="skill-tag">
-          {skill.name} {`(${skill.efficiency})`}
+          {skill.name}
         </div>
       ))}
     </div>

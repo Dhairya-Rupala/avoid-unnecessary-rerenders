@@ -148,8 +148,6 @@ button:active {
   background-color: rgb(197, 195, 195);
   padding: 3px;
   flex: none;
-  display: flex;
-  align-items: center;
 }
 
 .small-button {
@@ -165,6 +163,11 @@ button:active {
   gap: 4px;
 }
 
+.skills-input-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
 .skills-input-container {
   flex: 1;
   display: flex;
@@ -173,9 +176,9 @@ button:active {
 }
 
 .skills-input {
+  flex: 1;
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .skill-input-field {
@@ -185,10 +188,8 @@ button:active {
   flex: 1;
 }
 
-.skills-input-buttons {
-  display: flex;
-  flex: none;
-  gap: 8px;
+.add-skill-button {
+  align-self: flex-end;
 }
 
 #skill-input {
@@ -198,6 +199,5 @@ button:active {
 
 #efficiency-input {
   height: 30px;
-  max-width: 200px;
   flex: 1;
 }

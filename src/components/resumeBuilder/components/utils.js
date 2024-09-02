@@ -12,6 +12,6 @@ export const getFormattedContent = (formData) => {
     fullName,
     company,
     role,
-    skills: skills.sort((a, b) => b.efficiency - a.efficiency),
+    skills,
   };
 };
