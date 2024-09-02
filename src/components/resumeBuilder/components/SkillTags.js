@@ -1,8 +1,8 @@
-const SkillTags = ({ skills, style }) => {
+const SkillTags = ({ skills }) => {
   console.log('SkillTags Rendered');
 
   return (
-    <div className="skill-tags-container" style={style}>
+    <div className="skill-tags-container">
       {skills.map((skill, index) => (
         <div
           key={index}

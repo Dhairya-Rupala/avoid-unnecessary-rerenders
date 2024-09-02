@@ -22,10 +22,7 @@ const ResumePreview = ({ formData }) => {
         {formData.skills.length ? (
           <div className="resume-preview-skill-tags-container">
             <b>Skills</b>
-            <SkillTags
-              skills={formData.skills}
-              style={{ justifyContent: 'center' }}
-            />
+            <SkillTags skills={formData.skills} />
           </div>
         ) : null}
       </div>

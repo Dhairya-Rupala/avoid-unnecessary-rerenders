@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 const consoleSpy = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
-test('1', async () => {
+test('1', () => {
   const { getByTestId } = render(<App />);
 
   const firstNameInput = getByTestId('first-name');

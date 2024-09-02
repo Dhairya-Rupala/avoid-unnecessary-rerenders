@@ -26,7 +26,7 @@ const UserForm = ({ formData, onAction }) => {
 
   const onCompanyChange = (e) =>
     onAction({
-      type: 'UPDATE_COMPANY',
+      type: 'CHANGE_COMPANY',
       payload: { company: e.target.value },
     });
 

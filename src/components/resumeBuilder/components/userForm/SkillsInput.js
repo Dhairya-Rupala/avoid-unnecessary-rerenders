@@ -74,6 +74,7 @@ const SkillsInputContainer = ({ label, value, onChange }) => {
           data-testid="add-skill-button"
           className="small-button add-skill-button"
           disabled={!value[skillsCount - 1]?.name}
+          onClick={() => setSkillsCount(skillsCount + 1)}
         >
           Add
         </button>

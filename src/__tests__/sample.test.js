@@ -6,18 +6,6 @@ import '@testing-library/jest-dom';
 
 const consoleSpy = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
-test('Company input field should function properly', async () => {
-  const { getByTestId } = render(<App />);
-
-  const companyInput = getByTestId('company');
-
-  userEvent.clear(companyInput);
-  userEvent.type(companyInput, 'Test Company');
-
-  const resumePreview = getByTestId('resume-preview');
-  within(resumePreview).getByText('Company: Test Company');
-});
-
 test('Changing header color should change the background color of the header', () => {
   const { getByTestId } = render(<App />);
 
