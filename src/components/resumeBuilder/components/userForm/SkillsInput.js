@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const DEFAULT_SKILL = {
   name: '',
@@ -43,15 +43,18 @@ const SkillsInputContainer = ({ label, value, onChange }) => {
 
   const [skillsCount, setSkillsCount] = useState(value.length || 1);
 
+  const valueRef = useRef(value);
+  valueRef.current = value;
+
   const onUpdateSkill = (index, updatedSkill) => {
-    if (index < value.length) {
-      const updatedSkills = value.map((val, _index) =>
+    if (index < valueRef.current.length) {
+      const updatedSkills = valueRef.current.map((val, _index) =>
         _index === index ? updatedSkill : val
       );
       return onChange(updatedSkills);
     }
 
-    return onChange([...value, updatedSkill]);
+    return onChange([...valueRef.current, updatedSkill]);
   };
 
   return (
