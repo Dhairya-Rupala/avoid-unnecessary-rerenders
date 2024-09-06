@@ -38,9 +38,12 @@ const UserForm = ({ formData, onAction }) => {
   };
 
   return (
-    <div className="form-container">
-      <h3>User Form</h3>
-      <div data-testid="form" className="form">
+    <div class="flex flex-col gap-[12px]">
+      <span class="text-[18px]">Resume Form</span>
+      <div
+        data-testid="form"
+        class="flex flex-col gap-[12px] p-[24px] rounded-[6px] [box-shadow:rgba(0,_0,_0,_0.35)_0px_5px_15px]"
+      >
         <InputFormField
           id="first-name"
           label="First Name"

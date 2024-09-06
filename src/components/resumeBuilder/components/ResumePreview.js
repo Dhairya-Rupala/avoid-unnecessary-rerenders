@@ -7,21 +7,24 @@ const ResumePreview = ({ formData }) => {
   const content = getFormattedContent(formData);
 
   return (
-    <div className="resume-preview-container">
-      <h3>Resume Preview</h3>
-      <div data-testid="resume-preview" className="resume-preview">
-        <div className="name-company-details">
-          <div className="fullName">
+    <div class="flex flex-col gap-[12px] flex-[1] min-h-[300px]">
+      <span class="text-[18px]">Resume Preview</span>
+      <div
+        data-testid="resume-preview"
+        class="flex flex-col gap-[20px] p-[14px] justify-center items-center flex-[1] rounded-[6px] [box-shadow:rgba(0,_0,_0,_0.35)_0px_5px_15px] text-center"
+      >
+        <div class="flex flex-col gap-[20px]">
+          <div class="text-[28px]">
             <b>{content.fullName}</b>
           </div>
-          <div className="company-role">
+          <div class="flex flex-col gap-[4px]">
             <div>Company: {content.company}</div>
             <div>Role: {content.role}</div>
           </div>
         </div>
         {formData.skills.length ? (
-          <div className="resume-preview-skill-tags-container">
-            <b>Skills</b>
+          <div class="max-w-[400px] flex flex-col gap-[8px] justify-center items-center">
+            <span>Skills</span>
             <SkillTags skills={formData.skills} />
           </div>
         ) : null}

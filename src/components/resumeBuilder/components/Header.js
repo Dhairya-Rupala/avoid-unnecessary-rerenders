@@ -5,12 +5,13 @@ const Header = ({ headerColor, onChangeHeaderColor }) => {
     <div
       data-testid="header"
       style={{ backgroundColor: headerColor }}
-      className="header"
+      class="bg-[black] text-[white] flex-none flex gap-[20px] justify-between items-center p-[20px] rounded-tr-[4px] rounded-tl-[4px]"
     >
-      <h2>Resume Builder</h2>
+      <span class="text-[24px]">Resume Builder</span>
       <button
         data-testid="change-header-color-button"
         onClick={onChangeHeaderColor}
+        class="text-[black]"
       >
         Change Header Color
       </button>
