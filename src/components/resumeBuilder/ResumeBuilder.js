@@ -14,12 +14,12 @@ export const ResumeBuilder = () => {
   };
 
   return (
-    <div className="resume-builder-container">
+    <div class="w-[850px] flex flex-col border-[2px] border-[solid] border-[black] rounded-[6px]">
       <Header
         headerColor={headerColor}
         onChangeHeaderColor={onChangeHeaderColor}
       />
-      <div className="resume-builder">
+      <div class="flex flex-col gap-[50px] px-[20px] py-[30px]">
         <UserForm formData={formData} onAction={onAction} />
         <ResumePreview formData={adaptedFormData} />
       </div>
